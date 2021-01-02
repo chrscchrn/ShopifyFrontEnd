@@ -8,6 +8,9 @@ const useStyles = makeStyles((theme) => ({
       margin: theme.spacing(1),
     },
   },
+  form: {
+    margin: 0,
+  },
 }));
 
 const SearchForm = () => {
@@ -19,11 +22,20 @@ const SearchForm = () => {
     setState({ ...state, searchValue: e.target.value })
   }
 
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (state.searchValue.length !== 0) {
+      //api goes here
+    }
+  }
+
   return (
-    <form className={classes.root} noValidate autoComplete="off" style={{ border: '1px solid black'}}>
-      <FormControl variant="outlined">
-        <InputLabel htmlFor="component-outlined">Search</InputLabel>
-        <OutlinedInput id="component-outlined" onChange={handleChange} label="Search" />
+    <form className={classes.root} noValidate autoComplete="off" onSubmit={handleSubmit}>
+      <FormControl variant="outlined" fullWidth className={classes.form}>
+        <InputLabel htmlFor="component-outlined" color="primary">
+          Search
+        </InputLabel>
+        <OutlinedInput id="component-outlined" onChange={handleChange} label="Search" color="primary"/>
       </FormControl>
     </form>
   )
