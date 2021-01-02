@@ -1,4 +1,34 @@
-# Getting Started with Create React App
+# This is my Front End Submission for the Shopify Front End Intern Challenge
+
+I will be using these technologies:
+- Material UI
+- Roboto Font
+- @material-ui/icons
+- Create React App
+- OMDb API for Movie Search
+- Client-Side Storage
+- 
+
+Technical requirements:
+- Search results should come from OMDB's API (free API key: http://www.omdbapi.com/apikey.aspx).
+- Each search result should list at least its title, year of release and a button to nominate that film.
+- Updates to the search terms should update the result list
+- Movies in search results can be added and removed from the nomination list.
+- If a search result has already been nominated, disable its nominate button.
+- Display a banner when the user has 5 nominations.
+
+## Layout
+ *all pages should have the users name in there which is located front indexedDb or localstorage, if not they are redirected to the sign up page
+Enter Username Page:
+- User puts in there name
+- directs to the search/noms page
+Search and Noms Page:
+- Search results in rows of three, including picture
+-  show the nominated motion pictures to the right, taking about a third of the page
+
+⚠️ Be careful when using this approach. Make sure your bundler doesn't eager load all the font variations (100/300/400/500/700/900, italic/regular, SVG/woff). Fontsource can be configured to load specific subsets, weights and styles. Inlining all the font files can significantly increase the size of your bundle. Material-UI default typography configuration only relies on 300, 400, 500, and 700 font weights.
+
+================================
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
