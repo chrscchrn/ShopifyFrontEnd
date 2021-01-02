@@ -16,19 +16,7 @@ const useStyles = makeStyles((theme) => ({
 const Results = props => {
 
     const classes = useStyles();
-    let movieResults = null;
-    if (props.results) {
-        // movieResults = props.results.data.Search.map(({ Title, Year, Poster }) => )
-        movieResults = props.results;
-        let count = 1;
-        let children = {};
-        for (let i = 0; i < movieResults.length; i++) {
-            children.movieResults[i].Title = movieResults;
-            count += 1;
-
-        }
-        console.log(children, count)
-    }
+    
     
     return (
         <div className={classes.root}>
