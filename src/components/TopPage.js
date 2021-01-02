@@ -1,5 +1,3 @@
-// This page should take up like 20% of the vh
-// props is the current func of the webpage
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -21,9 +19,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-
-
-const TopPage = props => {
+const TopPage = () => {
     
     const classes = useStyles();
 

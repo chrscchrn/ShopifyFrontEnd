@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SearchForm = () => {
+const SearchForm = props => {
   
   const classes = useStyles();
   const [state, setState] = React.useState();
@@ -25,7 +25,7 @@ const SearchForm = () => {
   function handleSubmit(e) {
     e.preventDefault();
     if (state.searchValue.length !== 0) {
-      //api goes here
+      props.handleSearch(state.searchValue);
     }
   }
 
