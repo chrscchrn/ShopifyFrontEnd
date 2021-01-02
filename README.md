@@ -1,6 +1,6 @@
 # This is my Front End Submission for the Shopify Front End Intern Challenge
 
-I will be using these technologies:
+I will be using these libraries:
 - Material UI
 - Roboto Font
 - @material-ui/icons
@@ -26,7 +26,7 @@ Search and Noms Page:
 - Search results in rows of three, including picture
 -  show the nominated motion pictures to the right, taking about a third of the page
 
-
+(Remainder to make sure font doesnt slow everything down)
 ⚠️ Be careful when using this approach. Make sure your bundler doesn't eager load all the font variations (100/300/400/500/700/900, italic/regular, SVG/woff). Fontsource can be configured to load specific subsets, weights and styles. Inlining all the font files can significantly increase the size of your bundle. Material-UI default typography configuration only relies on 300, 400, 500, and 700 font weights.
 
 
@@ -50,14 +50,24 @@ Search and Noms Page:
      []  [] 
     OR
     [] [] []
-       [] 
+       []
        I can genereate additional rows easily, but then I must put in the cards/columns as a prop and have it automatically adjust!!!!
-       This way i can use this for the Nomz page
+       This way i can use this for the Nomz page as well as the search page
     OR (if theres a number % by three)
     [] [] []
     [] [] []
 ```
 
+### Aggregate Layout:
+```
+______Chrome_____________
+| switch   header       |  < put in a container with the children of switch and page title (the header and switch should be a constant)
+|_______________________|
+|        searchBar      |  < do not display if on noms page
+|_______________________|
+| Movies in threes      |  < Movie presentation component, the bread and butter of this website, to persist or not to persist
+|_______________________|
+```
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
