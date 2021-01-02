@@ -28,6 +28,34 @@ Search and Noms Page:
 
 ⚠️ Be careful when using this approach. Make sure your bundler doesn't eager load all the font variations (100/300/400/500/700/900, italic/regular, SVG/woff). Fontsource can be configured to load specific subsets, weights and styles. Inlining all the font files can significantly increase the size of your bundle. Material-UI default typography configuration only relies on 300, 400, 500, and 700 font weights.
 
+
+## Components
+- Row w/ { children }
+- movie card w/ { button-children }
+- hover: Button for adding to Nomz
+- hover: Button for removing from Nomz 
+- hover: Details button => card that has details neatly presented
+    - Movie details card should be a onesizeFitzAll and have great typography
+- Switch should bring me to search or nomz
+- Headers!
+- 
+
+### The movies should look like below:
+```
+3 - 2 - 1 cards for movies: 
+    Since I want to have rows of three I think that I should make the cards automatically center based on the number of movies remaining
+    [] [] []
+    [] [] []
+     []  [] 
+    OR
+    [] [] []
+       [] 
+       I can genereate additional rows easily, but then I must put in the cards/columns as a prop and have it automatically adjust!!!!
+       This way i can use this for the Nomz page
+    OR (if theres a number % by three)
+    [] [] []
+    [] [] []
+```
 ================================
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
