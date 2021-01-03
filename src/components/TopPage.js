@@ -11,15 +11,18 @@ const useStyles = makeStyles((theme) => ({
       height: '22vh',
       width: '100%',
       overflow: 'hidden',
+      marginTop: 64,
+      backgroundColor: '#DADED4',
+      color: '#3C403D',
     },
     header: {
       padding: theme.spacing(2),
       textAlign: 'center',
-      color: theme.palette.text.primary,
+      color: '#3C403D',
     },
 }));
 
-const TopPage = () => {
+const TopPage = props => {
     
     const classes = useStyles();
 
@@ -28,8 +31,10 @@ const TopPage = () => {
     function handleTitleChange(isNom) {
         if (!isNom) {
             setState({ ...state, title: 'Search for Movies'});
+            props.handleSwitch(true);
         } else {
-            setState({ ...state, title: 'Your Nomz'});
+            setState({ ...state, title: 'Your Nominations'});
+            props.handleSwitch(false);
         }
     }
 

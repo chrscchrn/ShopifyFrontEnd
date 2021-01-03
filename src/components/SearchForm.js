@@ -4,12 +4,12 @@ import { FormControl, InputLabel, OutlinedInput } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    '& > *': {
-      margin: theme.spacing(1),
-    },
+    margin: '64px 0px',
+    color: 'white',
   },
   form: {
     margin: 0,
+    color: 'white',
   },
 }));
 

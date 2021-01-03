@@ -16,15 +16,15 @@ const AntSwitch = withStyles((theme) => ({
   },
   switchBase: {
     padding: 0,
-    color: 'black',
+    color: '#fff',
     '&$checked': {
       transform: 'translateX(48px)',
-      color: 'white',
-      border: "1px solid black",
+      color: 'white', // keep white
+      // border: "1px solid #39603D",
       '& + $track': {
         opacity: 1,
-        backgroundColor: 'black',
-        borderColor: 'black',
+        backgroundColor: '#39603D',
+        // borderColor: '#39603D',
       },
     },
   },
@@ -34,10 +34,10 @@ const AntSwitch = withStyles((theme) => ({
     boxShadow: 'none',
   },
   track: {
-    border: `1px solid black`,
+    border: `1px solid #A3BCB6`,
     borderRadius: 32,
     opacity: 1,
-    backgroundColor: theme.palette.common.white,
+    backgroundColor: "#A3BCB6",
   },
   checked: {},
 }))(Switch);

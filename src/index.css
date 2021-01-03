@@ -12,6 +12,11 @@ code {
     monospace;
 }
 
-/* html {
-  background-color: rgb(80, 127, 168);
-} */
+html {
+  background-color: #DADED4;
+  color: '#3C403D'
+}
+
+#root {
+  background-color: #DADED4;
+}
