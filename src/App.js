@@ -23,6 +23,9 @@ const theme = createMuiTheme({
       dark: '#ba000d',
       contrastText: '#000',
     },
+    gold: {
+      main: '#a69344'
+    }
   },
 });
 
@@ -37,7 +40,6 @@ export default function App() {
     movieSearch(title)
       .then(res => {
         if (res.data) setState({ ...state, results: res, display: true });
-        console.log(res, "res");
       })
       .catch(err => console.log(err));
   }
@@ -52,7 +54,11 @@ export default function App() {
   } // lazy loading & suspense for nominations
 
   function calcNominations() {
-    setState({ ...state, totalNominations: Object.keys(localStorage).length });
+    if (Object.keys(localStorage).length === 5) {
+      setState({ ...state, totalNominations: Object.keys(localStorage).length, makeNumberGold: true });
+    } else {
+      setState({ ...state, totalNominations: Object.keys(localStorage).length, makeNumberGold: false });
+    }
   }
 
   React.useEffect(() => {
@@ -68,10 +74,12 @@ export default function App() {
           break;
       }
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state, state.results]);
 
   React.useEffect(() => {
     calcNominations();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -79,7 +87,7 @@ export default function App() {
       <CssBaseline/>
       <ThemeProvider theme={theme}>
         <Container fixed>
-          <TopPage handleSwitch={handleSwitch} totalNominations={state.totalNominations}/>
+          <TopPage handleSwitch={handleSwitch} totalNominations={state.totalNominations} gold={state.makeNumberGold}/>
           {state.isSearching ? <SearchForm handleSearch={handleSearch}/> : null}
           <Results results={state.results} display={state.display} calcNoms={calcNominations}/>
         </Container>

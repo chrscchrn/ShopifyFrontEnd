@@ -15,19 +15,20 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: '#DADED4',
       color: '#3C403D',
     },
-    header: {
+    bigHeader: {
       padding: theme.spacing(2),
       textAlign: 'center',
       color: '#3C403D',
     },
 }));
 
+
 const TopPage = props => {
     
     const classes = useStyles();
-
+    const gold = React.useRef(false);
     const [state, setState] = React.useState({ title: 'Search for Movies' });
-
+    
     function handleTitleChange(isNom) {
         if (!isNom) {
             setState({ ...state, title: 'Search for Movies'});
@@ -37,18 +38,28 @@ const TopPage = props => {
             props.handleSwitch(false);
         }
     }
-
+    
+    React.useEffect(() => {
+        if (props.gold !== undefined) {
+            gold.current = props.gold;
+            setState({ ...state, gold: gold.current });
+        }
+        
+    }, [props.gold])
+    
     return (
         <div className={classes.root}>
             <Grid container spacing={3}>
                 <Grid item xs={3}>
                     <CustomizedSwitches handleTitleChange={handleTitleChange}/>
                 </Grid>
-                <Grid item xs={6} className={classes.header}>
+                <Grid item xs={6} className={classes.bigHeader}>
                     <Headers variant="h2" component="h2">{state.title}</Headers>
                 </Grid>
                 <Grid item xs={3}>
-                    <Headers variant="h4" component="h4">{props.totalNominations}/5 <br/>Nominations</Headers>
+                    {state.gold === false
+                    ? <Headers variant="h4" component="h4">{props.totalNominations}/5 <br/>below</Headers>
+                    : <Headers variant="h4" component="h4" style={{ color: '#a69344 !important' }}>{props.totalNominations}/5 <br/>at</Headers>}
                 </Grid>
             </Grid>
         </div>

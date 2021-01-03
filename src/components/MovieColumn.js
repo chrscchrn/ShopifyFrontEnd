@@ -37,13 +37,22 @@ export default function MovieColumn(props) {
         isNominated: false,
     });
 
+    function handleNominationLimit() {
+        if (Object.keys(localStorage).length >= 5) {
+            alert('Your at the limit of 5 nominations');
+            return true;
+        } else {
+            return false
+        }
+    }
+
     function handleNomination() {
+        if (handleNominationLimit() === true) return;
         localStorage.setItem(JSON.stringify(state.id), JSON.stringify(state));
         setState({ ...state, isNominated: true });
         props.calcNoms();
     }
 
-// limit nominations
     function handleRemoveNomination() {
         localStorage.removeItem(JSON.stringify(state.id));
         setState({ ...state, isNominated: false });
