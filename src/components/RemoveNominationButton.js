@@ -6,7 +6,7 @@ const RemoveNominationButton = (props) => {
     return (
         <div>
             <Button variant="contained" color="default" onClick={props.click}>
-                <Typography style={{ color: 'black' }}>REM</Typography>
+                <Typography style={{ color: 'black' }}>Remove</Typography>
             </Button>
         </div>
     )

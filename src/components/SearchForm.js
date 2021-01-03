@@ -6,11 +6,16 @@ const useStyles = makeStyles((theme) => ({
   root: {
     margin: '64px 0px',
     color: 'white',
+    textShadow: '1px 1px #0000001b',
+
   },
   form: {
     margin: 0,
     color: 'white',
   },
+  input: {
+    fontWeight: 'bold',
+  }
 }));
 
 const SearchForm = props => {
@@ -35,7 +40,7 @@ const SearchForm = props => {
         <InputLabel htmlFor="component-outlined" color="primary">
           Search
         </InputLabel>
-        <OutlinedInput id="component-outlined" onChange={handleChange} label="Search" color="primary"/>
+        <OutlinedInput className={classes.input} id="component-outlined" onChange={handleChange} label="Search" color="primary"/>
       </FormControl>
     </form>
   )

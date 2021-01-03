@@ -10,19 +10,19 @@ import RemoveNominationButton from './RemoveNominationButton';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    textAlign: 'center',
-  },
-  poster: {
-    objectFit: 'contain !important', 
-    marginBottom: '16px',
-  },
-  textDiv: {
-    height: "12vh"
-  },
-  paper: {
-
-  }
+    root: {
+        textAlign: 'center',
+    },
+    poster: {
+        objectFit: 'contain !important', 
+        marginBottom: '16px',
+    },
+    textDiv: {
+        height: "12vh"
+    },
+    paper: {
+        padding: 8,
+    },
 }));
 
 export default function MovieColumn(props) {
@@ -38,7 +38,6 @@ export default function MovieColumn(props) {
     });
 
     function handleNomination() {
-        console.log('button working')
         localStorage.setItem(JSON.stringify(state.id), JSON.stringify(state));
         setState({ ...state, isNominated: true });
         props.calcNoms();
@@ -54,27 +53,24 @@ export default function MovieColumn(props) {
 
     React.useEffect(() => {
         let checkNomination = localStorage.getItem(JSON.stringify(state.id));
-        console.log(JSON.parse(checkNomination));
         if (checkNomination !== null) setState({ ...state, isNominated: true })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
         <Grid item xs={4} key={props.data.imdbID}>
-            <Paper elevation={4} className={classes.paper} variant="elevation" style={{
-                padding: '8px',
-            }}>
+            <Paper elevation={1} className={classes.paper} variant="elevation">
                 <div className={classes.textDiv}>
                     <Headers variant="h5" component="h5">{props.data.Title}</Headers>
                     <Typography>{props.data.Year}</Typography>
                 </div>
                 <Image className={classes.poster} src={props.data.Poster} alt={props.data.Title + '\'s Movie Poster'}/>
-            </Paper>
-            <div> 
-            {/* make fixed or absolute, look at the gatsby site to figure it otu */}
+                <br/>
                 {state.isNominated === true 
                 ? <RemoveNominationButton click={handleRemoveNomination}/> 
                 : <NominationButton click={handleNomination}/>}
-            </div>
+                <br/>
+            </Paper>
         </Grid>
     )
 }

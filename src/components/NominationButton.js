@@ -6,7 +6,7 @@ const NominationButton = (props) => {
     return (
         <div>
             <Button variant="contained" color="secondary" onClick={props.click}>
-                <Typography style={{ color: 'white' }}>NOM</Typography>
+                <Typography style={{ color: 'white' }}>Nominate</Typography>
             </Button>
         </div>
     )
