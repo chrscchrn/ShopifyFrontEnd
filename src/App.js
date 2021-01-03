@@ -7,7 +7,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import movieSearch from './utils/API';
-import { Typography } from "@material-ui/core";
+import Footer from "./components/Footer";
 
 const theme = createMuiTheme({
   palette: {
@@ -15,11 +15,11 @@ const theme = createMuiTheme({
       light: '#DCE1E3',
       main: '#3C403D',
       dark: '#002884',
-      contrastText: '#fff',
+      contrastText: '#000',
     },
     secondary: {
       light: '#ff7961',
-      main: '#f44336',
+      main: '#39603D',
       dark: '#ba000d',
       contrastText: '#000',
     },
@@ -47,11 +47,12 @@ export default function App() {
       setState({ ...state, isSearching: true });
     } else {
       setState({ ...state, isSearching: false, results: null });
+      //grab from local storage
     }
-  }
+  } // lazy loading & suspense for nominations
 
-  function clearSearchResults() {
-
+  function calcNominations() {
+    setState({ ...state, totalNominations: Object.keys(localStorage).length });
   }
 
   React.useEffect(() => {
@@ -67,25 +68,22 @@ export default function App() {
           break;
       }
     }
-    console.log(state);
-  }, [state, state.results])
+  }, [state, state.results]);
+
+  React.useEffect(() => {
+    calcNominations();
+  }, []);
 
   return (
     <React.Fragment>
       <CssBaseline/>
       <ThemeProvider theme={theme}>
         <Container fixed>
-          <TopPage handleSwitch={handleSwitch}/>
+          <TopPage handleSwitch={handleSwitch} totalNominations={state.totalNominations}/>
           {state.isSearching ? <SearchForm handleSearch={handleSearch}/> : null}
-          <Results results={state.results} display={state.display}/>
+          <Results results={state.results} display={state.display} calcNoms={calcNominations}/>
         </Container>
-        <footer style={{ margin: '8vh 0', textAlign: 'center' }}>
-          <Typography variant="h6">
-            Christopher Cochran
-            <br/>
-            <a href="https://cochranc.com">Cochranc.com</a>
-          </Typography>
-        </footer>
+        <Footer/>
       </ThemeProvider>
     </React.Fragment>
   );

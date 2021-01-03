@@ -47,7 +47,9 @@ const TopPage = props => {
                 <Grid item xs={6} className={classes.header}>
                     <Headers variant="h2" component="h2">{state.title}</Headers>
                 </Grid>
-                <Grid item xs={3}/>
+                <Grid item xs={3}>
+                    <Headers variant="h4" component="h4">{props.totalNominations}/5 <br/>Nominations</Headers>
+                </Grid>
             </Grid>
         </div>
     )
