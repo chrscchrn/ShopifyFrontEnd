@@ -26,19 +26,23 @@ const theme = createMuiTheme({
 });
 
 export default function App() {
-  const [state, setState] = React.useState({ results: null});
+  const [state, setState] = React.useState({ 
+    results: null, 
+    display: false
+  });
 
   function handleSearch(title) {
     movieSearch(title)
       .then(res => {
-        setState({ results: res });
+        if (res.data) setState({ results: res, display: true });
+        console.log(res, "res");
       })
       .catch(err => console.log(err));
   }
 
   React.useEffect(() => {
-    console.log(state.results)
-  }, [state.results])
+    console.log(state)
+  }, [state, state.results])
 
   // function handleNominations() {
   //   setState()
@@ -51,7 +55,7 @@ export default function App() {
         <Container fixed>
           <TopPage/>
           <SearchForm handleSearch={handleSearch}/>
-          <Results results={state.results}/>
+          <Results results={state.results} display={state.display}/>
         </Container>
       </ThemeProvider>
     </React.Fragment>

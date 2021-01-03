@@ -30,7 +30,7 @@ const AntSwitch = withStyles((theme) => ({
   },
   thumb: {
     width: 48,
-    height: 52,
+    height: 50,
     boxShadow: 'none',
   },
   track: {
