@@ -41,7 +41,15 @@ export default function App() {
   }
 
   React.useEffect(() => {
-    console.log(state)
+    switch (state.results.data.Error) {
+      case "Too many results.":
+        alert(state.results.data.Error);
+        break;
+      case "Movie not found!":
+        alert(state.results.data.Error);
+      default:
+        break;
+    }
   }, [state, state.results])
 
   // function handleNominations() {
