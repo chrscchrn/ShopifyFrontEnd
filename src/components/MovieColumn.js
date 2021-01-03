@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     },
     poster: {
         objectFit: 'contain !important', 
-        marginBottom: '16px',
+        // marginBottom: '16px',
     },
     textDiv: {
         height: "12vh"
