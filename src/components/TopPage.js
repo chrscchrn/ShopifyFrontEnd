@@ -44,7 +44,6 @@ const TopPage = props => {
             gold.current = props.gold;
             setState({ ...state, gold: gold.current });
         }
-        
     }, [props.gold])
     
     return (
@@ -58,8 +57,9 @@ const TopPage = props => {
                 </Grid>
                 <Grid item xs={3}>
                     {state.gold === false
-                    ? <Headers variant="h4" component="h4">{props.totalNominations}/5 <br/>below</Headers>
-                    : <Headers variant="h4" component="h4" style={{ color: '#a69344 !important' }}>{props.totalNominations}/5 <br/>at</Headers>}
+                    ? <Headers variant="h4" component="h4">{props.totalNominations}/5 <br/>Nominations</Headers>
+                    : <Headers variant="h4" component="h4">{props.totalNominations}/5 <br/>Nominations</Headers> }
+                     {/*make the bottom one gold  */}
                 </Grid>
             </Grid>
         </div>
@@ -67,7 +67,8 @@ const TopPage = props => {
 }
 
 TopPage.propTypes = {
-    title: PropTypes.string
+    title: PropTypes.string,
+    gold: PropTypes.bool,
 }
 
 export default TopPage

@@ -43,6 +43,25 @@ const Results = props => {
         for (let movieGroup of rowArr) {
             movieChilds.push(<MovieRow>{movieGroup}</MovieRow>);
         }
+
+    } else if (props.nominations) {
+
+        len = props.nominations.length;
+        movie = props.nominations;
+
+        for (let i = 0; i < len; i++) {
+            colArr.push(<MovieColumn data={movie[i]} calcNoms={props.calcNoms}/>)
+    
+            if (colArr.length === 3) {
+                rowArr.push(colArr);
+                colArr = [];
+            } else if (len === i+1) {
+                rowArr.push(colArr);
+            }
+        }
+        for (let movieGroup of rowArr) {
+            movieChilds.push(<MovieRow>{movieGroup}</MovieRow>);
+        }
     }
     
     return (

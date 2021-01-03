@@ -30,10 +30,10 @@ export default function MovieColumn(props) {
     const classes = useStyles();
 
     const [state, setState ] = React.useState({ 
-        id: props.data.imdbID,
-        title: props.data.Title,
-        year: props.data.Year,
-        poster: props.data.Poster,
+        imdbID: props.data.imdbID,
+        Title: props.data.Title,
+        Year: props.data.Year,
+        Poster: props.data.Poster,
         isNominated: false,
     });
 
@@ -48,23 +48,31 @@ export default function MovieColumn(props) {
 
     function handleNomination() {
         if (handleNominationLimit() === true) return;
-        localStorage.setItem(JSON.stringify(state.id), JSON.stringify(state));
+        localStorage.setItem(JSON.stringify(state.imdbID), JSON.stringify({
+            imdbID: state.imdbID,
+            Title: state.Title,
+            Year: state.Year,
+            Poster: state.Poster,
+        }));
         setState({ ...state, isNominated: true });
         props.calcNoms();
     }
 
     function handleRemoveNomination() {
-        localStorage.removeItem(JSON.stringify(state.id));
+        localStorage.removeItem(JSON.stringify(state.imdbID));
         setState({ ...state, isNominated: false });
         props.calcNoms();
     }
     
 
     React.useEffect(() => {
-        let checkNomination = localStorage.getItem(JSON.stringify(state.id));
+        let checkNomination = localStorage.getItem(JSON.stringify(state.imdbID));
+        console.log(checkNomination, "here")
         if (checkNomination !== null) setState({ ...state, isNominated: true })
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+
+    console.log(state);
 
     return (
         <Grid item xs={4} key={props.data.imdbID}>

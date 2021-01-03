@@ -7,7 +7,11 @@ const useStyles = makeStyles((theme) => ({
   title: {
     textAlign: 'center',
     textShadow: "1px 1px #0000002b",
+    color: props => ({
+      color: props.color
+    }),
   },
+  
 }));
 
 const Headers = props => {

@@ -34,6 +34,7 @@ export default function App() {
     results: null, 
     display: false,
     isSearching: true,
+    nominations: null,
   });
 
   function handleSearch(title) {
@@ -46,10 +47,13 @@ export default function App() {
 
   function handleSwitch(isSearching) {
     if (isSearching) {
-      setState({ ...state, isSearching: true });
+      setState({ ...state, isSearching: true, nominations: null });
     } else {
-      setState({ ...state, isSearching: false, results: null });
-      //grab from local storage
+      let storage = [];
+      for (let i = 0; i < Object.keys(localStorage).length; i++) {
+        storage.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
+      }
+      setState({ ...state, isSearching: false, results: null, nominations: storage });
     }
   } // lazy loading & suspense for nominations
 
@@ -62,7 +66,7 @@ export default function App() {
   }
 
   React.useEffect(() => {
-    if (state.results) {
+    if (state.result) {
       switch (state.results.data.Error) {
         case "Too many results.":
           alert(state.results.data.Error);
@@ -89,7 +93,7 @@ export default function App() {
         <Container fixed>
           <TopPage handleSwitch={handleSwitch} totalNominations={state.totalNominations} gold={state.makeNumberGold}/>
           {state.isSearching ? <SearchForm handleSearch={handleSearch}/> : null}
-          <Results results={state.results} display={state.display} calcNoms={calcNominations}/>
+          <Results results={state.results} nominations={state.nominations} display={state.display} calcNoms={calcNominations}/>
         </Container>
         <Footer/>
       </ThemeProvider>
