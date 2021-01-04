@@ -1,8 +1,8 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 import { makeStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
 
 function Alert(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -19,8 +19,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function CustomizedSnackbars(props) {
     const classes = useStyles();
-    const [open, setOpen] = React.useState(false);
-    const [state, setState] = React.useState({
+    const [ open, setOpen ] = React.useState(false);
+    const [ state ] = React.useState({
         open: false,
         vertical: 'top',
         horizontal: 'center',
@@ -55,4 +55,11 @@ export default function CustomizedSnackbars(props) {
             </Snackbar>
         </div>
     );
+}
+
+CustomizedSnackbars.propTypes = {
+    message: PropTypes.string,
+    severity: PropTypes.string,
+    open: PropTypes.bool,
+    close: PropTypes.func,
 }

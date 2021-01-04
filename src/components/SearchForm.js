@@ -1,6 +1,7 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import { FormControl, InputLabel, OutlinedInput } from '@material-ui/core';
+import PropTypes from 'prop-types';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -44,6 +45,10 @@ const SearchForm = props => {
       </FormControl>
     </form>
   )
+}
+
+SearchForm.propTypes = {
+  handleSearch: PropTypes.func,
 }
 
 export default SearchForm

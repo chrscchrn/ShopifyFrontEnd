@@ -25,8 +25,9 @@ const Headers = props => {
 }
 
 Headers.propTypes = {
-    variant: PropTypes.string,
-    component: PropTypes.string
+  variant: PropTypes.string,
+  component: PropTypes.string,
+  children: PropTypes.any,
 }
 
 export default Headers

@@ -3,6 +3,7 @@ import { withStyles } from '@material-ui/core/styles';
 import FormGroup from '@material-ui/core/FormGroup';
 import Switch from '@material-ui/core/Switch';
 import Grid from '@material-ui/core/Grid';
+import PropTypes from 'prop-types'
 import Typography from '@material-ui/core/Typography';
 import Headers from './Headers';
 
@@ -19,12 +20,10 @@ const AntSwitch = withStyles((theme) => ({
     color: '#fff',
     '&$checked': {
       transform: 'translateX(48px)',
-      color: 'white', // keep white
-      // border: "1px solid #39603D",
+      color: 'white', 
       '& + $track': {
         opacity: 1,
         backgroundColor: '#39603D',
-        // borderColor: '#39603D',
       },
     },
   },
@@ -43,6 +42,7 @@ const AntSwitch = withStyles((theme) => ({
 }))(Switch);
 
 export default function CustomizedSwitches(props) {
+  
   const [state, setState] = React.useState({
     checkedA: true,
     checkedB: true,
@@ -67,4 +67,8 @@ export default function CustomizedSwitches(props) {
       </Typography>
     </FormGroup>
   );
+}
+
+CustomizedSwitches.propTypes = {
+  handleTitleChange: PropTypes.func,
 }

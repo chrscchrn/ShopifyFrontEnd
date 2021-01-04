@@ -44,6 +44,7 @@ const TopPage = props => {
             gold.current = props.gold;
             setState({ ...state, gold: gold.current });
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.gold])
     
     return (
@@ -67,8 +68,9 @@ const TopPage = props => {
 }
 
 TopPage.propTypes = {
-    title: PropTypes.string,
     gold: PropTypes.bool,
+    handleSwitch: PropTypes.func,
+    totalNominations: PropTypes.number,
 }
 
 export default TopPage

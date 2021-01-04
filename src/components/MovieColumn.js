@@ -27,6 +27,9 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MovieColumn(props) {
 
+    
+    console.log(props)
+
     const classes = useStyles();
 
     const [state, setState ] = React.useState({ 
@@ -84,7 +87,7 @@ export default function MovieColumn(props) {
         let checkNomination = localStorage.getItem(JSON.stringify(state.imdbID));
         if (checkNomination !== null) setState({ ...state, isNominated: true })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [state])
+    }, [props])
 
     return (
         <Grid item xs={4} key={props.data.imdbID}>
@@ -97,7 +100,7 @@ export default function MovieColumn(props) {
                     className={classes.poster} 
                     src={props.data.Poster} 
                     alt={props.data.Title + '\'s Movie Poster'}
-                    animationDuration="1000" />
+                    animationDuration={1000} />
                 <br/>
                 {state.isNominated === true 
                 ? <RemoveNominationButton click={handleRemoveNomination}/> 
@@ -109,5 +112,11 @@ export default function MovieColumn(props) {
 }
 
 MovieColumn.propTypes = {
-    
+    data: PropTypes.shape({  
+        imdbID: PropTypes.string,
+        Title: PropTypes.string,
+        Year: PropTypes.string,
+        Poster: PropTypes.string,
+    }).isRequired,
+    calcNoms: PropTypes.func,
 }

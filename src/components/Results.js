@@ -27,7 +27,7 @@ const Results = props => {
                 }
             }
         }
-        
+
         for (let movieGroup of rowArr) movieChilds.push(<MovieRow>{movieGroup}</MovieRow>);
 
     } else if (props.nominations) {
@@ -56,8 +56,18 @@ const Results = props => {
     )
 }
 
+
+
 Results.propTypes = {
-    results: PropTypes.object
+    data: PropTypes.shape({
+        imdbID: PropTypes.string,
+        Title: PropTypes.string,
+        Year: PropTypes.string,
+        Poster: PropTypes.string,
+    }),
+    nominations: PropTypes.arrayOf(PropTypes.object),
+    display: PropTypes.bool,
+    calcNoms: PropTypes.func,
 }
 
 export default Results
