@@ -28,8 +28,6 @@ const useStyles = makeStyles((theme) => ({
 export default function MovieColumn(props) {
 
     
-    console.log(props)
-
     const classes = useStyles();
 
     const [state, setState ] = React.useState({ 
@@ -58,7 +56,6 @@ export default function MovieColumn(props) {
             Poster: state.Poster,
         }));
         setState({ ...state, isNominated: true });
-        console.log(Object.keys(localStorage))
         props.calcNoms();
     }
 
