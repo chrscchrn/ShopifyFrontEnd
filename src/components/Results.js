@@ -2,18 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import MovieColumn from './MovieColumn';
 import MovieRow from './MovieRow';
-import { makeStyles } from '@material-ui/core/styles';
-
-const useStyles = makeStyles((theme) => ({
-    paper: {
-        padding: theme.spacing(2),
-        textAlign: 'center',
-        color: theme.palette.text.secondary,
-    },
-}));
 
 const Results = props => {
-    const classes = useStyles();
 
     let colArr = [];
     let rowArr = [];
@@ -58,9 +48,8 @@ const Results = props => {
                 rowArr.push(colArr);
             }
         }
-        for (let movieGroup of rowArr) {
-            movieChilds.push(<MovieRow>{movieGroup}</MovieRow>);
-        }
+
+        for (let movieGroup of rowArr) movieChilds.push(<MovieRow>{movieGroup}</MovieRow>);
     }
     
     return (
