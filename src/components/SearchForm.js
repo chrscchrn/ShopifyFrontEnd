@@ -22,7 +22,9 @@ const useStyles = makeStyles((theme) => ({
 const SearchForm = props => {
   
   const classes = useStyles();
-  const [state, setState] = React.useState();
+  const [state, setState] = React.useState({
+    searchValue: "",
+  });
 
   function handleChange(e) {
     setState({ ...state, searchValue: e.target.value })
