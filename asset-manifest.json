@@ -1,26 +1,26 @@
 {
   "files": {
     "main.css": "/ShopifyFrontEnd/static/css/main.7add3e02.chunk.css",
-    "main.js": "/ShopifyFrontEnd/static/js/main.e3ff09fd.chunk.js",
-    "main.js.map": "/ShopifyFrontEnd/static/js/main.e3ff09fd.chunk.js.map",
+    "main.js": "/ShopifyFrontEnd/static/js/main.557c89e0.chunk.js",
+    "main.js.map": "/ShopifyFrontEnd/static/js/main.557c89e0.chunk.js.map",
     "runtime-main.js": "/ShopifyFrontEnd/static/js/runtime-main.71bebe85.js",
     "runtime-main.js.map": "/ShopifyFrontEnd/static/js/runtime-main.71bebe85.js.map",
     "static/css/2.ec181769.chunk.css": "/ShopifyFrontEnd/static/css/2.ec181769.chunk.css",
-    "static/js/2.fb5ab3e3.chunk.js": "/ShopifyFrontEnd/static/js/2.fb5ab3e3.chunk.js",
-    "static/js/2.fb5ab3e3.chunk.js.map": "/ShopifyFrontEnd/static/js/2.fb5ab3e3.chunk.js.map",
+    "static/js/2.07916981.chunk.js": "/ShopifyFrontEnd/static/js/2.07916981.chunk.js",
+    "static/js/2.07916981.chunk.js.map": "/ShopifyFrontEnd/static/js/2.07916981.chunk.js.map",
     "static/js/3.8c8bdfac.chunk.js": "/ShopifyFrontEnd/static/js/3.8c8bdfac.chunk.js",
     "static/js/3.8c8bdfac.chunk.js.map": "/ShopifyFrontEnd/static/js/3.8c8bdfac.chunk.js.map",
     "index.html": "/ShopifyFrontEnd/index.html",
     "static/css/2.ec181769.chunk.css.map": "/ShopifyFrontEnd/static/css/2.ec181769.chunk.css.map",
     "static/css/main.7add3e02.chunk.css.map": "/ShopifyFrontEnd/static/css/main.7add3e02.chunk.css.map",
-    "static/js/2.fb5ab3e3.chunk.js.LICENSE.txt": "/ShopifyFrontEnd/static/js/2.fb5ab3e3.chunk.js.LICENSE.txt",
+    "static/js/2.07916981.chunk.js.LICENSE.txt": "/ShopifyFrontEnd/static/js/2.07916981.chunk.js.LICENSE.txt",
     "static/media/index.css": "/ShopifyFrontEnd/static/media/roboto-vietnamese-400-normal.52cebac0.woff2"
   },
   "entrypoints": [
     "static/js/runtime-main.71bebe85.js",
     "static/css/2.ec181769.chunk.css",
-    "static/js/2.fb5ab3e3.chunk.js",
+    "static/js/2.07916981.chunk.js",
     "static/css/main.7add3e02.chunk.css",
-    "static/js/main.e3ff09fd.chunk.js"
+    "static/js/main.557c89e0.chunk.js"
   ]
 }
