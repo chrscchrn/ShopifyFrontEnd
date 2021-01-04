@@ -39,7 +39,7 @@ export default function MovieColumn(props) {
 
     function handleNominationLimit() {
         if (Object.keys(localStorage).length >= 5) {
-            alert('Your at the limit of 5 nominations');
+            alert('Your at the limit of 5 nominations'); //HERE======================================================================
             return true;
         } else {
             return false

@@ -8,6 +8,7 @@ import Container from '@material-ui/core/Container';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import movieSearch from './utils/API';
 import Footer from "./components/Footer";
+import Snackbar from './components/Snackbar';
 
 const theme = createMuiTheme({
   palette: {
@@ -37,6 +38,12 @@ export default function App() {
     nominations: null,
   });
 
+  const [ alert, setAlert ] = React.useState({
+    message: null,
+    severity: null,
+    open: false,
+  })
+
   function handleSearch(title) {
     movieSearch(title)
       .then(res => {
@@ -65,14 +72,23 @@ export default function App() {
     }
   }
 
+  function closeSnackbar(bool) {
+    setAlert({
+      ...alert,
+      open: bool,
+    })
+  }
+
   React.useEffect(() => {
-    if (state.result) {
+    
+    if (state.results) {
       switch (state.results.data.Error) {
         case "Too many results.":
-          alert(state.results.data.Error);
+          console.log(state.results.data.Error);
+          setAlert({ message: state.results.data.Error, severity: 'error', open: true })
           break;
         case "Movie not found!":
-          alert(state.results.data.Error);
+          setAlert({ message: state.results.data.Error, severity: 'error', open: true })
           break;
         default:
           break;
@@ -95,6 +111,7 @@ export default function App() {
           {state.isSearching ? <SearchForm handleSearch={handleSearch}/> : null}
           <Results results={state.results} nominations={state.nominations} display={state.display} calcNoms={calcNominations}/>
         </Container>
+        <Snackbar message={alert.message} severity={alert.severity} open={alert.open} close={closeSnackbar}/>
         <Footer/>
       </ThemeProvider>
     </React.Fragment>
