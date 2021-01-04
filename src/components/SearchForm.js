@@ -22,17 +22,19 @@ const useStyles = makeStyles((theme) => ({
 const SearchForm = props => {
   
   const classes = useStyles();
-  const [state, setState] = React.useState({
-    searchValue: "",
-  });
+  const [state, setState] = React.useState();
 
   function handleChange(e) {
-    setState({ ...state, searchValue: e.target.value })
+    if (e.target.value !== 0) {
+      // console.log(state)
+      props.handleSearch(e.target.value);
+    }
+    setState({ ...state, searchValue: e.target.value });
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (state.searchValue.length !== 0) {
+    if (e.target.value !== 0) {
       props.handleSearch(state.searchValue);
     }
   }
