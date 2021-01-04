@@ -65,12 +65,26 @@ export default function MovieColumn(props) {
         props.calcNoms();
     }
     
-
+    // if results change to null I should clear the state... 
+    // maybe have the component use the state data after the props data has been passed to it
     React.useEffect(() => {
         let checkNomination = localStorage.getItem(JSON.stringify(state.imdbID));
         if (checkNomination !== null) setState({ ...state, isNominated: true })
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+
+    React.useEffect(() => {
+        setState({
+            imdbID: props.data.imdbID,
+            Title: props.data.Title,
+            Year: props.data.Year,
+            Poster: props.data.Poster,
+            isNominated: false,
+        })
+        let checkNomination = localStorage.getItem(JSON.stringify(state.imdbID));
+        if (checkNomination !== null) setState({ ...state, isNominated: true })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [state])
 
     return (
         <Grid item xs={4} key={props.data.imdbID}>
@@ -95,5 +109,5 @@ export default function MovieColumn(props) {
 }
 
 MovieColumn.propTypes = {
-
+    
 }
