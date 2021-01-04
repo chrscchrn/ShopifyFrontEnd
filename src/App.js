@@ -67,24 +67,24 @@ export default function App() {
   function calcNominations() {
     if (Object.keys(localStorage).length === 5) {
       setState({ ...state, totalNominations: Object.keys(localStorage).length, makeNumberGold: true });
+      setAlert({ message: `You've hit the limit of 5 nominations. Check them out by clicking the switch.`, severity: 'success', open: true });
     } else {
       setState({ ...state, totalNominations: Object.keys(localStorage).length, makeNumberGold: false });
     }
   }
 
-  function closeSnackbar(bool) {
+  function closeSnackbar() {
     setAlert({
       ...alert,
-      open: bool,
+      open: false,
     })
   }
-
+  
   React.useEffect(() => {
     
     if (state.results) {
       switch (state.results.data.Error) {
         case "Too many results.":
-          console.log(state.results.data.Error);
           setAlert({ message: state.results.data.Error, severity: 'error', open: true })
           break;
         case "Movie not found!":
@@ -107,11 +107,24 @@ export default function App() {
       <CssBaseline/>
       <ThemeProvider theme={theme}>
         <Container fixed>
-          <TopPage handleSwitch={handleSwitch} totalNominations={state.totalNominations} gold={state.makeNumberGold}/>
-          {state.isSearching ? <SearchForm handleSearch={handleSearch}/> : null}
-          <Results results={state.results} nominations={state.nominations} display={state.display} calcNoms={calcNominations}/>
+          <TopPage 
+            handleSwitch={handleSwitch} 
+            totalNominations={state.totalNominations} 
+            gold={state.makeNumberGold}/>
+          {state.isSearching 
+          ? <SearchForm handleSearch={handleSearch}/> 
+          : null}
+          <Results 
+            results={state.results} 
+            nominations={state.nominations} 
+            display={state.display} 
+            calcNoms={calcNominations}/>
         </Container>
-        <Snackbar message={alert.message} severity={alert.severity} open={alert.open} close={closeSnackbar}/>
+        <Snackbar 
+          message={alert.message} 
+          severity={alert.severity} 
+          open={alert.open} 
+          close={closeSnackbar}/>
         <Footer/>
       </ThemeProvider>
     </React.Fragment>

@@ -38,7 +38,7 @@ export default function CustomizedSnackbars(props) {
         }
 
         setOpen(false);
-        props.close(false)
+        props.close();
     };
 
     return (

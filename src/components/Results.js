@@ -28,7 +28,9 @@ const Results = props => {
         }
 
         for (let i = 0; i < len; i++) {
-            colArr.push(<MovieColumn data={movie[i]} calcNoms={props.calcNoms}/>)
+            colArr.push(<MovieColumn 
+                            data={movie[i]} 
+                            calcNoms={props.calcNoms}/>)
     
             if (colArr.length === 3) {
                 rowArr.push(colArr);

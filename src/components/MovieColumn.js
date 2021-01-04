@@ -38,8 +38,8 @@ export default function MovieColumn(props) {
     });
 
     function handleNominationLimit() {
+        
         if (Object.keys(localStorage).length >= 5) {
-            alert('Your at the limit of 5 nominations'); //HERE======================================================================
             return true;
         } else {
             return false
@@ -55,6 +55,7 @@ export default function MovieColumn(props) {
             Poster: state.Poster,
         }));
         setState({ ...state, isNominated: true });
+        console.log(Object.keys(localStorage))
         props.calcNoms();
     }
 
@@ -67,12 +68,9 @@ export default function MovieColumn(props) {
 
     React.useEffect(() => {
         let checkNomination = localStorage.getItem(JSON.stringify(state.imdbID));
-        console.log(checkNomination, "here")
         if (checkNomination !== null) setState({ ...state, isNominated: true })
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-
-    console.log(state);
 
     return (
         <Grid item xs={4} key={props.data.imdbID}>
@@ -81,7 +79,11 @@ export default function MovieColumn(props) {
                     <Headers variant="h5" component="h5">{props.data.Title}</Headers>
                     <Typography>{props.data.Year}</Typography>
                 </div>
-                <Image className={classes.poster} src={props.data.Poster} alt={props.data.Title + '\'s Movie Poster'}/>
+                <Image 
+                    className={classes.poster} 
+                    src={props.data.Poster} 
+                    alt={props.data.Title + '\'s Movie Poster'}
+                    animationDuration="1000" />
                 <br/>
                 {state.isNominated === true 
                 ? <RemoveNominationButton click={handleRemoveNomination}/> 
