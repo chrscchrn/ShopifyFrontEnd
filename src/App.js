@@ -114,7 +114,7 @@ export default function App() {
     <React.Fragment>
       <CssBaseline/>
       <ThemeProvider theme={theme}>
-        <Container fixed>
+        <Container>
           <TopPage 
             handleSwitch={handleSwitch} 
             totalNominations={state.totalNominations} 
