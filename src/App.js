@@ -58,18 +58,30 @@ export default function App() {
     } else {
       let storage = [];
       for (let i = 0; i < Object.keys(localStorage).length; i++) {
-        storage.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
+        if (localStorage.key(i) !== 'theme-ui-color-mode') storage.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
       }
       setState({ ...state, isSearching: false, results: null, nominations: storage });
     }
   } // lazy loading & suspense for nominations
 
   function calcNominations() {
-    if (Object.keys(localStorage).length === 5) {
-      setState({ ...state, totalNominations: Object.keys(localStorage).length, makeNumberGold: true });
-      setAlert({ message: `You've hit the limit of 5 nominations. Check them out by clicking the switch.`, severity: 'success', open: true });
+    let themeUI = localStorage.getItem('theme-ui-color-mode');
+    if (themeUI === null) {
+      let nominationCount = Object.keys(localStorage).length;
+      if (nominationCount === 5) {
+        setState({ ...state, totalNominations: nominationCount, makeNumberGold: true });
+        setAlert({ message: `You've hit the limit of 5 nominations. Check them out by clicking the switch.`, severity: 'success', open: true });
+      } else {
+        setState({ ...state, totalNominations: nominationCount, makeNumberGold: false });
+      }
     } else {
-      setState({ ...state, totalNominations: Object.keys(localStorage).length, makeNumberGold: false });
+      let nominationCount = Object.keys(localStorage).length - 1;
+      if (nominationCount === 5) {
+        setState({ ...state, totalNominations: nominationCount, makeNumberGold: true });
+        setAlert({ message: `You've hit the limit of 5 nominations. Check them out by clicking the switch.`, severity: 'success', open: true });
+      } else {
+        setState({ ...state, totalNominations: nominationCount, makeNumberGold: false });
+      }
     }
   }
 
@@ -99,6 +111,7 @@ export default function App() {
 
   React.useEffect(() => {
     calcNominations();
+    console.log(localStorage);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

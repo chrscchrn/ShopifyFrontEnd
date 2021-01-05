@@ -39,12 +39,21 @@ export default function MovieColumn(props) {
     });
 
     function handleNominationLimit() {
-        
-        if (Object.keys(localStorage).length >= 5) {
-            return true;
+        let themeUI = localStorage.getItem('theme-ui-color-mode');
+        if (themeUI !== null) {
+            if (Object.keys(localStorage).length >= 6) {
+                return true;
+            } else {
+                return false
+            }
         } else {
-            return false
+            if (Object.keys(localStorage).length >= 5) {
+                return true;
+            } else {
+                return false
+            }
         }
+        
     }
 
     function handleNomination() {
