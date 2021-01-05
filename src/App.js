@@ -66,22 +66,18 @@ export default function App() {
 
   function calcNominations() {
     let themeUI = localStorage.getItem('theme-ui-color-mode');
+    let nominationCount;
     if (themeUI === null) {
-      let nominationCount = Object.keys(localStorage).length;
-      if (nominationCount === 5) {
-        setState({ ...state, totalNominations: nominationCount, makeNumberGold: true });
-        setAlert({ message: `You've hit the limit of 5 nominations. Check them out by clicking the switch.`, severity: 'success', open: true });
-      } else {
-        setState({ ...state, totalNominations: nominationCount, makeNumberGold: false });
-      }
+      nominationCount = Object.keys(localStorage).length;
+      
     } else {
-      let nominationCount = Object.keys(localStorage).length - 1;
-      if (nominationCount === 5) {
-        setState({ ...state, totalNominations: nominationCount, makeNumberGold: true });
-        setAlert({ message: `You've hit the limit of 5 nominations. Check them out by clicking the switch.`, severity: 'success', open: true });
-      } else {
-        setState({ ...state, totalNominations: nominationCount, makeNumberGold: false });
-      }
+      nominationCount = Object.keys(localStorage).length - 1;
+    }
+    if (nominationCount === 5) {
+      setState({ ...state, totalNominations: nominationCount, makeNumberGold: true });
+      setAlert({ message: `You've hit the limit of 5 nominations. Check them out by clicking the switch.`, severity: 'success', open: true });
+    } else {
+      setState({ ...state, totalNominations: nominationCount, makeNumberGold: false });
     }
   }
 
@@ -111,7 +107,6 @@ export default function App() {
 
   React.useEffect(() => {
     calcNominations();
-    console.log(localStorage);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

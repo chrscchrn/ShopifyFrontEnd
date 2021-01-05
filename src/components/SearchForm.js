@@ -26,7 +26,6 @@ const SearchForm = props => {
 
   function handleChange(e) {
     if (e.target.value !== 0) {
-      // console.log(state)
       props.handleSearch(e.target.value);
     }
     setState({ ...state, searchValue: e.target.value });
